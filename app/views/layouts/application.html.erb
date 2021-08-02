@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>E-Commerce</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+
+  </head>
+
+  <body id="<%= controller.controller_name %>" class="<%= controller.action_name %>">
+    <% if ["public","devise","sessions","registrations"].include?(controller.controller_name)%>
+
+    <header>
+      <%= render "layouts/nav/public" %>
+      <%= yield %>
+    </header>
+
+    <% else%>
+
+      <%= render "layouts/nav/dashboard" %>
+
+      <div class="container-fluid">
+        <div class="row">
+          <%= render "layouts/nav/sidebar" %>
+          <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4 py-5">
+            <%= yield %>
+          </main>
+        </div>
+      </div>
+
+    <% end %>
+    <%# <p class="alert alert-info notice"><%= notice %></p>
+    <%# <p class="alert alert-warning"><%= alert %></p>
+
+    <div id="notifications"><%= notice %></div>
+
+
+    <%#= render "layouts/footer" %>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.js" ></script>
+
+
+
+
+    <script>feather.replace()</script>
+  </body>
+</html>

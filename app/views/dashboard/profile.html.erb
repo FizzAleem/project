@@ -1,0 +1,13 @@
+<h1 class="py-5">profile Picture Updated</h1>
+
+<% if current_account %>
+ <%= image_tag(current_account.avatar_thumbnail) %>
+<% else %>
+<div class="field">
+
+      <%= image_tag('e-profile.png') %>
+
+    </div>
+
+
+<% end %>
