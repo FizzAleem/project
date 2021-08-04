@@ -1,5 +1,9 @@
 <% @products.each do |product|%>
   <div class="col-3">
-    <%= image_tag(product.images[image]) %>
+
+ <%= product_thumbnail product %>
+ 
+    <h3> <%= product.name %></h3>
+    <h3> <%= product.price %></h3>
   <div>
 <% end %>

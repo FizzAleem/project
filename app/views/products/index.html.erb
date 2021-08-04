@@ -39,6 +39,18 @@
           </span>
         <% end %>
         </td>
+        <td>
+          <%= link_to order_items_path, method: :delete, data: { confirm: 'Are you sure?' } do %>
+          <span>
+            <i data-feather="shopping-cart" ></i>
+          </span>
+        <% end %>
+          <%# <% form_for @order_item do |f| %>
+          <%# <%= f.hidden_field :product_id, :value => product.id %>
+          <%# <%= f.number_field :quantity, :value => 1, :min => 1%>
+          <%# <%= f.submit "Add to cart" %>
+          <%# <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
@@ -46,4 +58,7 @@
 
 <br>
 
+
 <%= link_to 'New Product', new_product_path, class: 'btn btn-success' %>
+
+

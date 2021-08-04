@@ -13,3 +13,27 @@
  *= require_tree .
  *= require_self
  */
+ .carousel{
+  background: #eee;
+  width: 50%;
+}
+.carousel-cell{
+  width: 100%;
+  height: 300px;
+  margin-right: 10px;
+  border-radius: 10px;
+  counter-increment: carousel-cell;
+
+  vertical-align: middle;
+  object-fit: cover;
+}
+
+.carousel-cell::before{
+  display: block;
+  text-align: center;
+  content: counter(carousel-cell);
+  line-height: 280px;
+  font-size: 80px;
+  color: white;
+}
+

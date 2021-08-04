@@ -1,10 +1,14 @@
 Rails.application.routes.draw do
+  get 'cards/show'
   get "dashboard" => 'dashboard#index', as: :dashboard
   # get "accounts/edit" => 'accounts#edit', as: :accounts
   get 'dashboard/products'
   get 'dashboard/orders'
   get 'dashboard/profile'
-  resources :products
+  resources :products do
+    resources :comments
+  end
+ 
   devise_for :accounts
   root to: 'public#main'
 

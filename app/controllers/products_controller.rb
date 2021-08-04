@@ -1,14 +1,21 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: %i[ show edit update destroy ]
-
+  before_action :authenticate_account!, except: [:index,:show]
+  before_action :valid_account,only:[:edit,:update,:destroy]
   # GET /products or /products.json
   def index
+    @products = Product.all.with_attached_images
 
-    @products = Product.all
+    # @order_item = current_order.order_item.new
+
+    # render json: @products.map { |product|
+    #   product.as_json.merge({ images: url_for(product.images) })
+    # }
   end
 
   # GET /products/1 or /products/1.json
   def show
+    @product =Product.find(params[:id])
   end
 
   # GET /products/new
@@ -19,6 +26,8 @@ class ProductsController < ApplicationController
   # GET /products/1/edit
   def edit
   end
+
+
 
   # POST /products or /products.json
   def create
@@ -69,4 +78,11 @@ class ProductsController < ApplicationController
     def product_params
       params.require(:product).permit(:name, :price, :description, images:[])
     end
+
+    def valid_account
+      @prod = current_account.products.find_by(id: params[:id])
+      redirect_to products_path,notice: "authorization failed" if @prod.nil?
+    end
+
+
 end
