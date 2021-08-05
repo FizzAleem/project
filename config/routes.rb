@@ -8,7 +8,10 @@ Rails.application.routes.draw do
   resources :products do
     resources :comments
   end
- 
+
+  resources :checkout, only: [:create]
+  post "checkout/create", to: "checkout#create"
+
   devise_for :accounts
   root to: 'public#main'
 

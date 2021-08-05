@@ -7,7 +7,11 @@ class Product < ApplicationRecord
 
   has_many :comments
 
-  validates :name, presence: true
-  
+  validates :name, :price, presence: true
+
+  def to_s
+    name
+  end
+
   scope :latest, -> { order created_at: :desc }
 end

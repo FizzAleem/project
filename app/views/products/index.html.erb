@@ -8,6 +8,7 @@
       <th>Name</th>
       <th>Price</th>
       <th>Description</th>
+      <th>PAYMENT</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -15,9 +16,10 @@
   <tbody>
     <% @products.each do |product| %>
       <tr>
-        <td><%= product.name %></td>
+        <td><%= product %></td>
         <td><%= product.price %></td>
         <td><%= product.description %></td>
+        <td><%= button_to "Buy Now!", checkout_create_path, params: {id: product.id}, remote: true %> </td>
         <td>
         <%= link_to product do%>
         <span>
